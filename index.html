@@ -8,23 +8,30 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial Black',Arial,sans-serif;}
         body{background:#000;color:#fff;}
-        .top-bar{background:linear-gradient(to bottom,#006400,#008000);padding:8px 0;text-align:center;font-size:14px;}
-        .top-bar a{color:#fff;margin:0 12px;text-decoration:none;}
+        .top-bar{
+            background:linear-gradient(to bottom,#006400,#008000);
+            padding:10px 0;
+            text-align:center;
+            font-size:15px;
+        }
+        .top-bar a{color:#fff;margin:0 14px;text-decoration:none;font-size:18px;}
+
         header{background:#510400;padding:20px 0;text-align:center;}
         .logo-container{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;}
         .logo{width:70px;height:70px;background:url('logo.jpg') center/contain no-repeat;}
         .title{font-size:42px;font-weight:900;letter-spacing:2px;color:#fff;text-shadow:0 0 5px rgba(255,255,255,.5),3px 3px 6px #000;}
         
         /* NAVIGATION */
+        */
         nav{
             background:#111;
-            padding:15px 0;
+            padding:18px 0;
             text-align:center;
             position:relative;
         }
         nav a{
             color:#fff;
-            margin:0 30px;
+            margin:0 28px;
             text-decoration:none;
             font-size:18px;
             font-weight:bold;
@@ -34,10 +41,15 @@
         }
         nav a:hover{color:#00ff00;text-shadow:0 0 12px #00ff00;}
 
-        /* DROPDOWN UNDER FIESTA */
+        /* DROPDOWN - WORKS ON HOVER (DESKTOP) + CLICK (MOBILE) */
         .dropdown{
             display:inline-block;
             position:relative;
+        }
+        .dropdown > a::after{
+            content:" down arrow";
+            margin-left:6px;
+            transition:transform 0.3s;
         }
         .dropdown-content{
             display:none;
@@ -45,80 +57,116 @@
             top:100%;
             left:50%;
             transform:translateX(-50%);
-            background:rgba(0,0,0,0.95);
-            min-width:220px;
-            border:2px solid #006400;
-            border-radius:10px;
+            background:rgba(0,0,0,0.98);
+            min-width:240px;
+            border:3px solid #006400;
+            border-radius:12px;
             overflow:hidden;
-            box-shadow:0 0 30px rgba(0,255,0,0.6);
+            box-shadow:0 0 40px rgba(0,255,0,0.7);
             z-index:1000;
         }
+
+        /* Hover for desktop */
         .dropdown:hover .dropdown-content{
             display:block;
-            animation:fadeIn 0.3s ease;
+            animation:fadeIn 0.35s ease;
         }
+
+        /* Click/tap for mobile */
+        .dropdown.active .dropdown-content{
+            display:block;
+            animation:fadeIn 0.35s ease;
+        }
+        .dropdown.active > a::after{
+            transform:rotate(180deg);
+        }
+
         .dropdown-content a{
             display:block;
-            padding:14px 20px;
-            margin:0 !important;
-            font-size:16px;
+            padding:16px 24px;
+            font-size:17px;
             border-bottom:1px solid rgba(0,255,0,0.3);
             transition:.3s;
         }
         .dropdown-content a:hover{
             background:#006400;
             color:#fff;
-            padding-left:30px;
+            padding-left:34px;
         }
-        .dropdown-content a:last-child{border-bottom:none;}
+        .dropdown-content a:last-child{border:none;}
 
         @keyframes fadeIn{
-            from{opacity:0;transform:translateX(-50%) translateY(-10px);}
+            from{opacity:0;transform:translateX(-50%) translateY(-15px);}
             to{opacity:1;transform:translateX(-50%) translateY(0);}
         }
 
-
         .hero{
             position:relative;
-            height:60vh;
+            min-height:65vh;
             background:url('Mariners Onside.jpg') center/cover no-repeat fixed;
             display:flex;
             align-items:center;
             justify-content:center;
             text-align:center;
         }
-        .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.3);}
+        .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.4);}
         .hero h1{
-            font-size:90px;
+            font-size:88px;
             font-weight:900;
-            letter-spacing:5px;
-            text-shadow:0 0 15px #fff,5px 5px 20px #000;
+            letter-spacing:6px;
+            text-shadow:0 0 20px #fff,6px 6px 25px #000;
             position:relative;
+            z-index:2;
         }
-        .membership-boxes{display:flex;justify-content:center;gap:80px;flex-wrap:wrap;margin-top:40px;}
+
+        .membership-boxes{
+            display:flex;
+            justify-content:center;
+            gap:70px;
+            flex-wrap:wrap;
+            margin-top:50px;
+            padding:0 20px;
+        }
         .box{
-            background:rgba(0,0,0,0.8);
-            padding:30px;
-            border-radius:10px;
-            width:300px;
+            background:rgba(0,0,0,0.85);
+            padding:35px;
+            border-radius:12px;
+            width:320px;
             text-align:center;
             border:2px solid rgba(0,255,0,0.8);
-            box-shadow:0 0 40px rgba(0,255,0,0.7);
+            box-shadow:0 0 50px rgba(0,255,0,0.7);
+            transition:.4s;
+        }
+        .box:hover{
+            box-shadow:0 0 70px rgba(0,255,0,1);
+            transform:translateY(-10px) scale(1.03);
+        }
+        .btn{
+            display:block;
+            width:100%;
+            padding:18px;
+            font-size:900 21px 'Arial';
+            border-radius:10px;
+            margin:20px 0;
             transition:.3s;
         }
-        .box:hover{box-shadow:0 0 60px rgba(0,255,0,1);transform:scale(1.05);}
-        .btn{display:block;width:100%;padding:15px;font-size:20px;font-weight:bold;border-radius:8px;margin:15px 0;transition:.3s;}
         .btn-green{background:#008631;color:#fff;}
         .btn-green:hover{background:#00ff00;color:#000;}
         .btn-red{background:#8B0000;color:#fff;}
-        .btn-red:hover{background:#c00;}
+        .btn-red:hover{background:#ff0000;color:#fff;}
 
+        /* MOBILE OPTIMIZATIONS */
         @media (max-width:768px){
-            nav a{margin:0 15px;font-size:16px;}
-            .hero h1{font-size:60px;}
-            .membership-boxes{flex-direction:column;align-items:center;}
-            .box{width:90%;}
-            .dropdown-content{left:auto;right:0;transform:none;}
+            nav a{margin:0 14px;font-size:16px;}
+            .hero h1{font-size:52px;letter-spacing:3px;}
+            .membership-boxes{flex-direction:column;align-items:center;gap:40px;}
+            .box{width:90%;max-width:350px;}
+            .dropdown-content{
+                left:auto;
+                right:10px;
+                transform:none;
+                min-width:200px;
+            }
         }
     </style>
 </head>
@@ -141,13 +189,12 @@
         </div>
     </header>
 
-    <!-- NAVIGATION WITH FIESTA DROPDOWN -->
+    <!-- NAVIGATION WITH MOBILE-FRIENDLY DROPDOWN -->
     <nav>
         <a href="contact Us.html">CONTACT US</a>
 
-        <!-- FIESTA with dropdown -->
-        <div class="dropdown">
-            <a href="fiesta.html">FIESTA <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown" id="fiesta-dropdown">
+            <a href="fiesta.html">FIESTA<i class="fas fa-caret-down"></i></a>
             <div class="dropdown-content">
                 <a href="agm.html">AGM</a>
                 <a href="football-fiesta.html">FOOTBALL FIESTA</a>
@@ -163,7 +210,7 @@
 
         <div class="membership-boxes">
             <div class="box">
-                <h3>MARINERS ONSIDE LADY MARINERS</h3>
+                <h3>LADY MARINERS</h3>
                 <a href="#" class="btn btn-green">CLICK HERE</a>
                 <p>FREE MEMBERSHIP</p>
             </div>
@@ -174,6 +221,23 @@
             </div>
         </div>
     </section>
+
+    <!-- SMALL JS FOR MOBILE CLICK SUPPORT -->
+    <script>
+        // Makes dropdown work on tap (mobile) without breaking hover on desktop
+        document.getElementById('fiesta-dropdown').addEventListener('click', function(e){
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                this.classList.toggle('active');
+            }
+        });
+        // Close dropdown when clicking outside (mobile)
+        document.addEventListener('click', function(e){
+            if (window.innerWidth <= 768 && !e.target.closest('#fiesta-dropdown')) {
+                document.getElementById('fiesta-dropdown').classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
