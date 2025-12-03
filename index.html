@@ -44,7 +44,17 @@
         nav a{color:#fff;margin:0 28px;text-decoration:none;font-size:18px;font-weight:bold;text-transform:uppercase;transition:.3s;}
         nav a:hover{color:#00ff00;text-shadow:0 0 12px #00ff00;}
 
-        /* HERO – PURE BLACK */
+        /* DROPDOWN (kept simple) */
+        .dropdown{display:inline-block;position:relative;}
+        .dropdown-toggle{display:inline-flex;align-items:center;gap:8px;color:#fff;padding:8px 0;cursor:pointer;}
+        .dropdown-content{
+            display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+            background:rgba(0,0,0,0.98);min-width:240px;border:3px solid #006400;border-radius:12px;
+            box-shadow:0 0 40px rgba(0,255,0,0.7);
+        }
+        .dropdown:hover .dropdown-content,.dropdown.active .dropdown-content{display:block;}
+
+        /* HERO – BLACK BG */
         .hero{
             min-height:90vh;
             background:#000;
@@ -53,29 +63,29 @@
             text-align:center;
         }
 
-        /* NEW "JOIN THE ULTRAS" BANNER – EXACTLY LIKE YOUR IMAGE */
+        /* JOIN THE ULTRAS BOX – SMALLER SIZE */
         .join-banner{
-            width: 680px;
-            max-width: 92%;
-            margin-bottom: 70px;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 
-                0 0 40px rgba(0, 255, 0, 0.8),
-                0 0 80px rgba(139, 0, 0, 0.7),
-                inset 0 0 60px rgba(255, 255, 255, 0.1);
-            animation: neonGlow 3s infinite alternate;
+            background: 
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                url('T3.jpg') center/cover no-repeat;
+            width: 700px;           /* Reduced width */
+            max-width: 90%;         /* Responsive */
+            padding: 18px 40px;     /* Less vertical padding = shorter height */
+            border-radius:18px;
+            border:4px solid rgba(255,255,255,0.25);
+            box-shadow:0 0 70px rgba(255,0,0,0.8), 0 0 100px rgba(0,255,0,0.6);
+            margin-bottom:60px;
         }
-        .join-banner img{
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 28px;
-        }
-
-        @keyframes neonGlow {
-            from { box-shadow: 0 0 40px rgba(0,255,0,0.8), 0 0 80px rgba(139,0,0,0.7); }
-            to   { box-shadow: 0 0 60px rgba(0,255,0,1), 0 0 120px rgba(139,0,0,1); }
+        .join-banner h1{
+            font-size:68px;                 /* Smaller but still bold */
+            font-weight:900;
+            letter-spacing:8px;
+            color:#fff;
+            text-transform:uppercase;
+            text-shadow:
+                0 0 15px #fff,
+                4px 4px 0 #8B0000,
+                -4px -4px 0 #006400;
         }
 
         /* MEMBERSHIP BOXES */
@@ -103,12 +113,14 @@
 
         /* RESPONSIVE */
         @media (max-width:768px){
-            .join-banner{width:85%;margin-bottom:50px;}
+            .join-banner{width:85%;padding:16px 30px;}
+            .join-banner h1{font-size:52px;letter-spacing:5px;}
             .membership-boxes{gap:50px;}
             .box{width:90%;}
         }
         @media (max-width:480px){
-            .join-banner{width:94%;margin-bottom:40px;}
+            .join-banner{width:92%;padding:14px 20px;}
+            .join-banner h1{font-size:40px;letter-spacing:3px;}
             .btn{font-size:20px;padding:16px;}
         }
     </style>
@@ -120,7 +132,7 @@
         <span>FOLLOW US</span>
         <a href="https://www.facebook.com/share/17cesvqNoP/" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://twitter.com/MarinersOnside" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/marinersonsideofficial?igsh=MW94ZW03cnVhRzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/marinersonsideofficial?igsh=MW94ZW03cnVhMnRzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.youtube.com/@MarinersOnside" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://t.me/MarinersOnside" target="_blank"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://discord.gg/marinersonside" target="_blank"><i class="fab fa-discord"></i></a>
@@ -148,10 +160,10 @@
         <a href="store.html">STORE</a>
     </nav>
 
-    <!-- HERO – NOW USING YOUR EXACT BANNER IMAGE -->
+    <!-- HERO – SMALLER JOIN BOX WITH h1.jpg -->
     <section class="hero">
         <div class="join-banner">
-            <img src="ultras-banner.jpg" alt="JOIN THE ULTRAS - Mariners Onside">
+            <h1>JOIN THE ULTRAS</h1>
         </div>
 
         <div class="membership-boxes">
